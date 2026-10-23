@@ -1,0 +1,235 @@
+:root{
+  --bg:#fcfcfc;
+  --ink:#111;
+  --muted:#5b5b5b;
+  --accent:#0ea5a5;         /* turquesa suave */
+  --line:#e9ecef;
+  --chip:#eef9f8;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font: 16px/1.55 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===== Layout general ===== */
+.cv{
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+}
+
+.sidebar{
+  background: white;
+  border: 1px solid var(--line);
+  padding: 24px;
+  border-radius: 16px;
+  position: sticky;
+  top: 24px;
+  align-self: start;
+}
+
+.content{
+  display: grid;
+  gap: 24px;
+}
+
+/* ===== Encabezado derecha ===== */
+.hero{
+  background: white;
+  border: 1px solid var(--line);
+  padding: 28px;
+  border-radius: 16px;
+}
+
+.name{
+  margin: 0 0 6px 0;
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.subtitle{
+  margin: 0;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* ===== Bloques ===== */
+.block{
+  background: white;
+  border: 1px solid var(--line);
+  padding: 22px;
+  border-radius: 16px;
+}
+
+.block__title{
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Subtítulo dentro de un bloque (p. ej. "Lenguajes" / "Motores" en Habilidades técnicas) */
+.block__subtitle{
+  margin: 16px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.block__title + .block__subtitle{ margin-top: 0; }
+
+/* ===== Iconos (SVG en línea, heredan color con currentColor) ===== */
+.icon{
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.block__title .icon{
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.data-list li{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.data-list .icon{
+  color: var(--accent);
+  margin-top: .22em;
+}
+.data-list li span{ min-width: 0; overflow-wrap: anywhere; }
+
+/* ===== Listas y tipografía ===== */
+.data-list,
+.bullet-list,
+.tag-list{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.data-list li + li,
+.bullet-list li + li{ margin-top: 8px; }
+
+.bullet-list li{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bullet-list .icon{ color: var(--accent); }
+
+.tag-list li{
+  display: inline-block;
+  background: var(--chip);
+  border: 1px solid #d6f1ef;
+  color: #145e5e;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin: 6px 6px 0 0;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+a{ color: inherit; text-decoration: underline; text-decoration-color: #b7e2df; }
+a:hover{ text-decoration-color: var(--accent); }
+
+/* ===== Foto ===== */
+.photo{
+  display: grid; place-items: center;
+  margin-bottom: 12px;
+}
+.photo img{
+  width: 120px;        /* tamaño de la foto */
+  height: 120px;
+  object-fit: cover;   /* evita que se deforme */
+  border-radius: 50%;  /* la hace circular */
+}
+.photo__placeholder{
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #68d5cf);
+  color: white;
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 36px;
+  box-shadow: 0 6px 18px rgba(14,165,165,.25);
+}
+
+/* ===== Items (experiencia / estudios) ===== */
+.item + .item{ margin-top: 18px; }
+
+.item__head{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: baseline;
+}
+
+.item__role{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.item__meta{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 920px){
+  .cv{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{
+    position: static;
+    order: -1;
+  }
+}
+
+/* ===== Estilos de impresión A4 ===== */
+@media print{
+  :root{
+    --bg:#fff;
+    --accent:#0f6f6f;
+  }
+  @page{ size: A4; margin: 12mm; }
+  body{ background:#fff; }
+  .cv{
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 32% 1fr;
+    gap: 10mm;
+  }
+  .sidebar,.block,.hero{
+    border: 1px solid #ccc;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  a{ text-decoration: none; }
+  .photo__placeholder{ box-shadow: none; }
+}
