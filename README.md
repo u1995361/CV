@@ -2,7 +2,7 @@
 
 Preliminary submission for Hypermedia (Part 1): a single-page website featuring my Curriculum Vitae, built with HTML and CSS.
 
-- **Published website:** _(pending: add the GitHub Pages link)_
+- **Published website:** https://u1995361.github.io/CV/
 - **Figma design:** https://www.figma.com/design/vbGeTNpaQQR43cZIE0RZHe/CV?node-id=0-1&t=fUCX1tEwJ0s6fTBW-1
 ---
 
